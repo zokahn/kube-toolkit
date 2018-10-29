@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod-nfs
+  labels:
+   app: testing-ability-to-run-a-pod-with-nfs
+spec:
+  containers:
+  - name: love-yourself
+    image: centos:7 
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do echo you are appriciated on $(date); sleep 10;done"]
+    volumeMounts:
+    - mountPath: /data
+      name: nfs-volume
+  volumes:
+   - name: nfs-volume
+     persistentVolumeClaim:
+       claimName: nfs-claim1
+
