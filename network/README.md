@@ -4,7 +4,7 @@ This section contains Kubernetes resources expressed as yaml files of the catego
 
 # Description of directories and files
 
-##ingres
+## ingres
 The ingress controller as possible in Docker EE 2.0. [see here on the Docker site](https://docs.docker.com/ee/ucp/kubernetes/layer-7-r)
 - ingress-namespace.yaml
 
