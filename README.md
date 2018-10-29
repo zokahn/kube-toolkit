@@ -8,6 +8,7 @@ Formulating correct resources via yaml files, while very literal and distinct, v
 To apply these yaml files you need a working Kubernetes installation. Docker Enterprise Edition Platform 2.0 (Docker EE) was used as a base as it carries a full kubernetes implementation. Using the community edition is fine too! Docker for Mac is excellent, it will also give you kubernetes! Minikube is also great as a base although it has different implementations of certain base resources. The more detailed and dependand the resources in the yaml files get, the more varied the results will be on diffent platforms. It will always work on Docker EE.
 
 More info here:
+
 [Docker EE](https://docs.docker.com/ee/)
 
 [Docker CE](https://docs.docker.com/install/)
