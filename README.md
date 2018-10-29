@@ -9,8 +9,11 @@ To apply these yaml files you need a working Kubernetes installation. Docker Ent
 
 More info here:
 [Docker EE](https://docs.docker.com/ee/)
+
 [Docker CE](https://docs.docker.com/install/)
+
 [Docker for Mac](https://docs.docker.com/docker-for-mac/)
+
 [Minikube](https://kubernetes.io/docs/setup/minikube/)
 
 You can also apply the resources in this repo to test play around on a instant live platform:
