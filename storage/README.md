@@ -19,8 +19,14 @@ This is simple pod, based on Centos 7. It will start and loop a text to stdout w
 The effect is that the pod will mount the nfs share on the described mount point. It will need the NFS mount ability, if NFS client files are missing from the image NFS mount will fail and you will find evidence of it in the logs.
 
 test the mount by viewing logs
-``` kubectl logs test-pod-nfs ```
+
+```
+kubectl logs test-pod-nfs 
+```
 
 Or get a shell into the pod itself and see the mount
-``` kubectl exec -it test-pod-nfs /bin/bash ```
+
+```
+kubectl exec -it test-pod-nfs /bin/bash
+```
  
