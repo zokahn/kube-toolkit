@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: app
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: app1.example.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: appsvc1
+          servicePort: 80
+  - host: app2.example.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: appsvc2
+          servicePort: 80

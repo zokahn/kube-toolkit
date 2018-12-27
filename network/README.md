@@ -7,5 +7,5 @@ This section contains Kubernetes resources expressed as yaml files of the catego
 ## nginx-ingress
 A Docker EE friendly implementation of the nginx based Kubernetes ingress controller.
 
-## traefik-ingres
+## traefik-Ingress
 A Docker EE friendly implementation of the Traefik based kubernetes ingress controller.
