@@ -41,25 +41,51 @@ There are some significant differences between using Deployments and DaemonSets:
 
 This particular implementation is rather experimental and we will stick with a Deployment.
 
+note: the Traefik docs describe running the objects in the kube-system namespace. In these yaml files the services and most other objects are deployed in the namespace: ingress-traefik
+
+```
+kubectl create -f traefik-deployment.yaml
+```
+
+- Service account
+- Deployment Controller
+  - single replica based in the image: traefik
+- service
+  - publishing the default http backend port 80
+  - publishing the admin http console on port 8080
+
+You can now check the deployment either by checking the default end-point or the admin console. First you need to check where you can reach these services:
+
+```
+kubectl get svc --namespace ingress-traefik
+```
+You can check the name of the service here, next we describe the service to find out the port numbers. These will be unique to your deployment:
+
+```
+kubectl describe service traefik-ingress-service --namespace ingress-traefik | grep NodePort
+Type:                     NodePort
+NodePort:                 web  34738/TCP
+NodePort:                 admin  34245/TCP
+```
+Append this port to the public ip of your master, for me this is:
+
+```
+172.28.128.11:34738
+172.28.128.11:34245
+```
 
 
+## Ingress routing rules! host based
+We need to create routing rules, now that the Igress controller components are deployed. With these rules we allow outside requests to reach services in the cluster.
+
+note: make sure you changed dns or updates your hosts file so the named based requests get somewhere:
+
+```
+kubectl create -f app-ingress.yaml
+```
 
 
-
-
-
-Create NGINX Ingress Controller
-``` kubectl create namespace ingress ```
-Create a namespace for the ingress controller entities to live in
-
-## Create backend deployment and service
-``` kubectl create -f default-backend-deployment.yaml -f default-backend-service.yaml -n=ingress ```
-
-## Create configmap items for this service
-``` kubectl create -f nginx-ingress-controller-config-map.yaml -n=ingress ```
-
-## create nginx controller roles applied to the service account
-``` kubectl create -f nginx-ingress-controller-roles.yaml -n=ingress ```
-
-## Create the actual controller
-``` kubectl create -f nginx-ingress-controller-deployment.yaml -n=ingress ```
+## Ingress routing rules! path based
+```
+kubectl create -f app-ingress-path.yaml
+```

@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: app-path
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefixStrip
+spec:
+  rules:
+  - host: docker1.zokahn.local
+    http:
+      paths:
+      - path: /app1
+        backend:
+          serviceName: appsvc1
+          servicePort: 80
+      - path: /app2
+        backend:
+          serviceName: appsvc1
+          servicePort: 80
